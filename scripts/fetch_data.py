@@ -1,4 +1,4 @@
-from src.processing.api import fetch_venues
+from src.processing.api import fetch_venues, fetch_cafes, fetch_by_chunk
 import pandas as pd
 from pathlib import Path
 
@@ -40,8 +40,8 @@ def venues():
     print(f"Saved {len(df_venues)} venues to {PROCESSED_DIR/'venues_with_flat_coords.json'}")
 
 def main():
-    venues()
-    
+    # venues()
+    fetch_by_chunk("cafes-and-restaurants-with-seating-capacity/records?where=census_year%%20%%3E%%3D%%20'2023-01-01'%%20AND%%20census_year%%20%%3C%%20'2024-01-01'&limit=%d&offset=%d")
     return
 
 if __name__ == "__main__":
