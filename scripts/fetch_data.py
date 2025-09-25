@@ -1,4 +1,4 @@
-from src.processing.api import fetch_venues, fetch_data
+from src.processing.api import fetch_venues
 import pandas as pd
 from pathlib import Path
 
@@ -38,9 +38,11 @@ def venues():
     # Save as JSON
     df_venues.to_json("data/processed/venues_with_flat_coords.json", orient="records", indent=2)
     print(f"Saved {len(df_venues)} venues to {PROCESSED_DIR/'venues_with_flat_coords.json'}")
+
 def main():
     # Use the public wrapper (not _get)
     # venues()
+    
     return
 
 if __name__ == "__main__":

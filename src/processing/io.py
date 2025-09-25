@@ -10,3 +10,8 @@ def save_csv(df: pd.DataFrame, filename: str):
 def load_csv(filename: str) -> pd.DataFrame:
     path = DATA_DIR / "processed" / filename
     return pd.read_csv(path)
+
+def load_json(filename: str) -> pd.DataFrame:
+    path = DATA_DIR / "processed" / filename
+    return pd.read_json(path)
+

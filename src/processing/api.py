@@ -24,6 +24,6 @@ def fetch_venues(limit: int = 100, offset: int = 0) -> list[Dict[str, Any]]:
     """Fetch venues from the API."""
     return _get(f"venues-for-event-bookings/records?limit={limit}&offset={offset}")
 
-def fetch_data(param: int) -> list[Dict[str, Any]]:
+def fetch(param: int) -> list[Dict[str, Any]]:
     """Fetch data."""
     return _get(f"data/{param}")
