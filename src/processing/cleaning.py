@@ -63,3 +63,8 @@ def filter_by_coordinates(df, lat_min=min_lat, lat_max=max_lat, lon_min=min_lon,
         (df['lon'] >= lon_min) & (df['lon'] <= lon_max)
     ].copy()
 
+def wpgmaps_add_required_fields(df):
+    # TODO: WP Go Maps formatting: https://www.wpgmaps.com/help/
+    # TASK 1: add necessary columns with corresponding values
+    # TASK 2: change the names of additional columns as per the docs
+    return df
