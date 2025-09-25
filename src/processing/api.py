@@ -20,9 +20,9 @@ def _get(endpoint: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, An
     response.raise_for_status()
     return response.json()
 
-def fetch_venues(limit: int = 100) -> list[Dict[str, Any]]:
-    """Fetch a list of venues from the API."""
-    return _get("venues-for-event-bookings", params={"limit": limit})
+def fetch_venues(limit: int = 100, offset: int = 0) -> list[Dict[str, Any]]:
+    """Fetch venues from the API."""
+    return _get(f"venues-for-event-bookings/records?limit={limit}&offset={offset}")
 
 def fetch_data(param: int) -> list[Dict[str, Any]]:
     """Fetch data."""
