@@ -63,8 +63,38 @@ def filter_by_coordinates(df, lat_min=min_lat, lat_max=max_lat, lon_min=min_lon,
         (df['lon'] >= lon_min) & (df['lon'] <= lon_max)
     ].copy()
 
-def wpgmaps_add_required_fields(df):
+def wpgmaps_add_required_fields(df, category, map_id):
+    """Bulk changes to a single value for attributes"""
     # TODO: WP Go Maps formatting: https://www.wpgmaps.com/help/
     # TASK 1: add necessary columns with corresponding values
+    # Add a new column with the same value for all rows
+    
+    # Format requirements for the import file `column(is_required): value`
+    # map_id: This allows you to specify the ID of the map you would like the markers to be imported into.
+    df['map_id'] = map_id
+    # icon: The icon column allows you to set the marker’s icon that will display on the map. This is done by entering the URL for the icon you want to use.
+    # infoopen: default open and close toggle
+    df['infoopen'] = 0
+    # category: The category column allows you to set which categories your marker belongs to. This is done by entering the category id into the column.
+    df['category'] = category
+    # approved (Required): The approved column refers to sets whether the marker is allowed to be displayed on the frontend of your site or not. Setting it to 1 means that the marker will be displayed on the frontend, whereas setting it to 0 means it will not be displayed on the frontend.
+    df['approved'] = 1
+    # retina (Required): The retina column refers to whether or not the Retina is enabled to disabled. Setting it as 1 will enable the Retina, whereas setting it to 0 will disable the Retina.
+    df['retina'] = 1
     # TASK 2: change the names of additional columns as per the docs
+    return df
+
+def wpgmaps_format_venues(df, category):
+    # id (Required): This refers to the ID given to your marker.
+    df = df.rename(columns={'prop_id': 'id'})
+    # address (Not Required if lat/lng present): This is the physical address of the marker. E.g. 123 Imaginary Drive, Los Angeles, California, USA.
+    # description: The description is the paragraph in the Infowindow which gives a description of your location or what your marker represents.
+    # pic: The pic column allows you to add an image to your marker by specifying the image URL. You can only add one image per marker when importing.
+    # link: The link column allows you to specify the link for the “More Details” button in the Infowindow.
+    # lat (Not Required if Address is present): The lat column refers to the latitude value for the marker’s position.
+    # lng (Not Required if Address is present): The lng column refers to the longitude value for the marker’s position.
+    df = df.rename(columns={'lon': 'lng'})
+    # icon: The icon column allows you to set the marker’s icon that will display on the map. This is done by entering the URL for the icon you want to use.
+    # title: The title column refers to the Title given to the marker/Name of the marker. E.g. Beijing Railway Station.
+    df = df.rename(columns={'full_name': 'title'})
     return df

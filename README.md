@@ -24,5 +24,7 @@ $WORKDIR is the project's working directory containing all files associated with
 ## Ensure requests installation
 `python3 -c "import requests; print(requests.__version__)"`
 
-
+# WPGMaps in WordPress
+Required columns for importing a file are outlined in
+https://www.wpgmaps.com/help/docs/importing-files/
 

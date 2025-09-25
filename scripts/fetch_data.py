@@ -40,8 +40,7 @@ def venues():
     print(f"Saved {len(df_venues)} venues to {PROCESSED_DIR/'venues_with_flat_coords.json'}")
 
 def main():
-    # Use the public wrapper (not _get)
-    # venues()
+    venues()
     
     return
 
