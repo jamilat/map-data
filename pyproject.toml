@@ -3,16 +3,18 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "data-processing"
+name = "processing"
 version = "0.1.0"
 description = "Scripts and tools for data cleaning and analysis"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3"
 
 # Dependencies for your processing
 dependencies = [
+  "requests",
+  "python-dotenv",
   "pandas>=2.0",
-  "numpy>=1.24",
+  "numpy>=2.3",
   "matplotlib",
   "scikit-learn",
 ]
