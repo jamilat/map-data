@@ -1,11 +1,12 @@
 import pandas as pd
 from pathlib import Path
+import csv
 
 DATA_DIR = Path("data")
 
 def save_csv(df: pd.DataFrame, filename: str):
     path = DATA_DIR / "processed" / filename
-    df.to_csv(path, index=False)
+    df.to_csv(path, index=False, quoting=csv.QUOTE_MINIMAL)
 
 def load_csv(filename: str) -> pd.DataFrame:
     path = DATA_DIR / "processed" / filename

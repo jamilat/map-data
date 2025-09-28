@@ -29,7 +29,7 @@ def venues():
     # For the JSON file:
 
     # Flatten lon/lat
-    df_venues["lon"] = df_venues["geo_point_2d"].apply(lambda x: x["lon"])
+    df_venues["lng"] = df_venues["geo_point_2d"].apply(lambda x: x["lon"])
     df_venues["lat"] = df_venues["geo_point_2d"].apply(lambda x: x["lat"])
 
     # Drop the nested dict columns if you don’t need them
@@ -41,7 +41,7 @@ def venues():
 
 def main():
     # venues()
-    fetch_by_chunk("cafes-and-restaurants-with-seating-capacity/records?where=census_year%%20%%3E%%3D%%20'2023-01-01'%%20AND%%20census_year%%20%%3C%%20'2024-01-01'&limit=%d&offset=%d")
+    fetch_by_chunk("cafes-and-restaurants-with-seating-capacity/records?where=census_year%%20%%3E%%3D%%20'2023-01-01'%%20AND%%20census_year%%20%%3C%%20'2024-01-01'&limit=%d&offset=%d", "2023-cafes-and-restaurants-with-seating-capacity")
     return
 
 if __name__ == "__main__":

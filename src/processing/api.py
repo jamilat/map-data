@@ -36,7 +36,7 @@ def fetch_cafes(limit: int = 100, offset: int = 0) -> list[Dict[str, Any]]:
 def _get_chunk(endpoint, limit, offset):
     return _get(endpoint % (limit, offset))
 
-def fetch_by_chunk(endpoint: str) -> list[Dict[str, Any]]:
+def fetch_by_chunk(endpoint: str, out: str) -> list[Dict[str, Any]]:
     """Fetch data."""
     all_rows = [] # collect results in memory
     limit = 100
@@ -55,7 +55,7 @@ def fetch_by_chunk(endpoint: str) -> list[Dict[str, Any]]:
         offset += 100
 
     df = pd.DataFrame(all_rows)
-    df.to_csv(PROCESSED_DIR / "data.csv", index=False)
-    print(f"Saved {len(df)} venues to {PROCESSED_DIR/'data.csv'}")
+    df.to_csv(PROCESSED_DIR / f"{out}.csv", index=False)
+    print(f"Saved {len(df)} venues to {PROCESSED_DIR/f'{out}.csv'}")
     
     
